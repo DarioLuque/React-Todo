@@ -1,18 +1,25 @@
 import React from 'react';
-import TodoForm from './components/TodoForm'
-import TodoList from './components/TodoList'
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList';
+
+import './components/Todo.css'
 
 const todo = [
   {
-    task: 'EQ guitar track',
-    id: Date.now(),
+    task: 'EQ guitar, bass, drums',
+    id: 1,
     completed: false
   },
   {
     task: 'Master track',
-    id: Date.now(),
+    id: 2,
     completed: false
-  }  
+  },
+  {
+    task: 'Export Track',
+    id: 3,
+    completed: false
+  }    
 ];
 
 class App extends React.Component {
@@ -26,16 +33,59 @@ class App extends React.Component {
     };
   }
 
-  
+  addItem = (e, item) => {
+    console.log('first task: ', this.state.todo);
+    e.preventDefault();
+    const newTask = {
+      task: item,
+      id: Date.now(),
+      completed: false
+    };
+
+    this.setState({
+      todo: [...this.state.todo, newTask]
+    });
+    console.log('second tasks: ', this.state.todo)
+  }
+
+  toggleItem = itemId => {
+
+    this.setState({
+      todo: this.state.todo.map(item => {
+        if (itemId === item.id) {
+          return {
+            ...item,
+            completed: !item.completed
+          };
+        }
+        return item;
+      })
+    });
+  };
+
+  clearCompleted = e => {
+    e.preventDefault();
+
+    this.setState({
+      todo: this.state.todo.filter(item => !item.completed)
+    })
+    console.log(this.state.todo)
+  }
 
   render() {
     return (
-      <div>
-        <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoForm />
+      <div className="app-container">
+        <header className="app-header">
+        <h2>TODO LIST</h2>
+        <TodoForm addItem={this.addItem} />
+        </header>
+        <div className="todo-body">
+        <TodoList 
+        todo={this.state.todo}
+        toggleItem={this.toggleItem}
+        clearCompleted={this.clearCompleted}
+        />
         </div>
-        <TodoList />
       </div>
     );
   }
