@@ -9,12 +9,17 @@ const TodoList = props => {
   // const sortedList = props.groceries.sort((a, b) => a.purchased - b.purchased);
   return (
     <div>
+      <div className="todo-body">
       {props.todo.map(item => (
         <Todo key={item.id} item={item} toggleItem={props.toggleItem} />
       ))}
-      <button onClick={props.clearCompleted}>
+      </div>
+      
+      <div className="btn-container">
+      <button className="btn-completed" onClick={props.clearCompleted}>
         Clear Completed
       </button>
+      </div>
     </div>
   );
 };

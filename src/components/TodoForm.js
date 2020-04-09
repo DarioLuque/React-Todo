@@ -26,13 +26,13 @@ class TodoForm extends React.Component {
     console.log("Todoform props: ", this.props);
     return (
       <form onSubmit={this.submitItem}>
-        <input
+        <input className="input-tab"
           type="text"
           name="item"
           value={this.state.item}
           onChange={this.handleChanges}
         />
-        <button>Add</button>
+        <button className="btn-add">Add</button>
       </form>
     );
   }
