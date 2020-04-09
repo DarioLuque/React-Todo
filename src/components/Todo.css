@@ -1,0 +1,49 @@
+body {
+  /* border: 3px solid black; */
+  width: 80%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-image: url(https://images.unsplash.com/photo-1437419764061-2473afe69fc2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1780&q=80);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.app-container{
+  border: 2px double white;
+  width: 75%;
+  height: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-header {
+  
+  width: 100%;
+  height: 25%;
+  margin-bottom: 5%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-body {
+  width: 50%;
+  background-color: white;
+  text-align: center;
+}
+
+.item.completed {
+  background-color: #ffffff;
+  text-decoration: line-through;
+}
